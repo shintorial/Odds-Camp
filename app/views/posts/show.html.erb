@@ -1,7 +1,7 @@
 <div class="container mx-auto px-4 py-8">
-  <div class="bg-white rounded-lg shadow-lg p-6">
-    <div class="mb-8">
-      <div class="flex justify-between items-start mb-4">
+  <div class="max-w-4xl mx-auto">
+    <div class="bg-white rounded-lg shadow-lg p-6">
+      <div class="flex justify-between items-start mb-6">
         <div>
           <h1 class="text-3xl font-bold mb-2"><%= @post.title %></h1>
           <p class="text-gray-600">
@@ -16,73 +16,75 @@
         <% end %>
       </div>
 
-      <div class="prose max-w-none mb-6">
-        <%= simple_format @post.content %>
+      <div class="prose max-w-none mb-8">
+        <%= @post.content %>
       </div>
 
-      <div class="flex items-center space-x-4">
-        <% if user_signed_in? %>
-          <% if current_user.liked_posts.include?(@post) %>
-            <%= button_to 'Unlike', post_like_path(@post, current_user.likes.find_by(post: @post)), 
+      <div class="flex items-center space-x-4 text-sm text-gray-500 mb-8">
+        <div class="flex items-center">
+          <% if current_user && @post.likes.exists?(user: current_user) %>
+            <%= button_to post_like_path(@post, @post.likes.find_by(user: current_user)), 
                 method: :delete, 
-                class: 'text-red-500 hover:text-red-700' %>
+                class: 'text-red-500 hover:text-red-700' do %>
+              <span class="mr-1"><%= @post.like_count %></span>
+              <span>Likes</span>
+            <% end %>
           <% else %>
-            <%= button_to 'Like', post_likes_path(@post), 
+            <%= button_to post_likes_path(@post), 
                 method: :post, 
-                class: 'text-gray-500 hover:text-red-500' %>
+                class: 'text-gray-500 hover:text-red-500' do %>
+              <span class="mr-1"><%= @post.like_count %></span>
+              <span>Likes</span>
+            <% end %>
           <% end %>
+        </div>
 
-          <% if current_user.shared_posts.include?(@post) %>
-            <%= button_to 'Unshare', post_share_path(@post, current_user.shares.find_by(post: @post)), 
+        <div class="flex items-center">
+          <% if current_user && @post.shares.exists?(user: current_user) %>
+            <%= button_to post_share_path(@post, @post.shares.find_by(user: current_user)), 
                 method: :delete, 
-                class: 'text-blue-500 hover:text-blue-700' %>
+                class: 'text-blue-500 hover:text-blue-700' do %>
+              <span class="mr-1"><%= @post.share_count %></span>
+              <span>Shares</span>
+            <% end %>
           <% else %>
-            <%= button_to 'Share', post_shares_path(@post), 
+            <%= button_to post_shares_path(@post), 
                 method: :post, 
-                class: 'text-gray-500 hover:text-blue-500' %>
+                class: 'text-gray-500 hover:text-blue-500' do %>
+              <span class="mr-1"><%= @post.share_count %></span>
+              <span>Shares</span>
+            <% end %>
           <% end %>
-        <% end %>
-
-        <div class="text-gray-500">
-          <%= pluralize(@post.like_count, 'like') %> · 
-          <%= pluralize(@post.share_count, 'share') %>
         </div>
       </div>
-    </div>
 
-    <div class="border-t pt-8">
-      <h2 class="text-2xl font-bold mb-6">Comments</h2>
-
-      <% if user_signed_in? %>
-        <%= form_with(model: [@post, @comment], local: true, class: 'mb-8') do |f| %>
-          <div class="mb-4">
-            <%= f.text_area :content, rows: 3, 
-                class: 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500', 
-                placeholder: 'Add a comment...' %>
-          </div>
-          <%= f.submit 'Post Comment', 
-              class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' %>
-        <% end %>
-      <% end %>
-
-      <div class="space-y-6">
-        <% @comments.each do |comment| %>
-          <div class="bg-gray-50 rounded-lg p-4">
-            <div class="flex justify-between items-start mb-2">
-              <div>
-                <p class="font-medium"><%= comment.user.email %></p>
-                <p class="text-gray-500 text-sm"><%= time_ago_in_words(comment.created_at) %> ago</p>
-              </div>
-              <% if current_user == comment.user %>
-                <%= button_to 'Delete', post_comment_path(@post, comment), 
-                    method: :delete, 
-                    class: 'text-red-500 hover:text-red-700', 
-                    data: { confirm: 'Are you sure?' } %>
-              <% end %>
+      <div class="border-t pt-6">
+        <h2 class="text-xl font-bold mb-4">Comments</h2>
+        
+        <% if user_signed_in? %>
+          <%= form_with(model: [@post, @comment], local: true, class: "mb-6") do |f| %>
+            <div class="mb-4">
+              <%= f.text_area :content, rows: 3, class: "w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500", placeholder: "Write a comment..." %>
             </div>
-            <p class="text-gray-700"><%= comment.content %></p>
-          </div>
+            <%= f.submit "Post Comment", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+          <% end %>
         <% end %>
+
+        <div class="space-y-4">
+          <% @comments.each do |comment| %>
+            <div class="bg-gray-50 rounded-lg p-4">
+              <div class="flex justify-between items-start mb-2">
+                <p class="text-sm text-gray-600">
+                  <%= comment.user.email %> commented <%= time_ago_in_words(comment.created_at) %> ago
+                </p>
+                <% if current_user == comment.user %>
+                  <%= button_to "Delete", post_comment_path(@post, comment), method: :delete, class: "text-red-500 hover:text-red-700 text-sm" %>
+                <% end %>
+              </div>
+              <p class="text-gray-800"><%= comment.content %></p>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

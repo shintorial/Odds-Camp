@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Webboard</title>
+    <title><%= content_for(:title) || "Odds Camp" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-gray-100">
-    <nav class="bg-white shadow-lg">
+  <body>
+    <nav class="bg-gray-800">
       <div class="container mx-auto px-4">
-        <div class="flex justify-between items-center h-16">
+        <div class="flex items-center justify-between h-16">
           <div class="flex items-center">
-            <%= link_to 'Webboard', root_path, class: 'text-xl font-bold text-gray-800' %>
+            <%= link_to "Odds Camp", root_path, class: "text-white font-bold text-xl" %>
           </div>
           <div class="flex items-center">
             <% if user_signed_in? %>
-              <span class="text-gray-600 mr-4"><%= current_user.email %></span>
-              <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'text-gray-600 hover:text-gray-800' %>
+              <%= link_to "New Post", new_post_path, class: "text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+              <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
             <% else %>
-              <%= link_to 'Sign In', new_user_session_path, class: 'text-gray-600 hover:text-gray-800 mr-4' %>
-              <%= link_to 'Sign Up', new_user_registration_path, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' %>
+              <%= link_to "Sign In", new_user_session_path, class: "text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+              <%= link_to "Sign Up", new_user_registration_path, class: "text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
             <% end %>
           </div>
         </div>
@@ -45,4 +59,4 @@
 
     <%= yield %>
   </body>
-</html> 
+</html>

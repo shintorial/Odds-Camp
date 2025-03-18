@@ -6,9 +6,9 @@ class SharesController < ApplicationController
     @share = current_user.shares.build(post: @post)
     
     if @share.save
-      redirect_to @post, notice: 'Post shared!'
+      redirect_to @post, notice: 'Post shared successfully.'
     else
-      redirect_to @post, alert: 'Unable to share post.'
+      redirect_to @post, alert: 'You have already shared this post.'
     end
   end
 
@@ -16,9 +16,9 @@ class SharesController < ApplicationController
     @share = current_user.shares.find_by(post: @post)
     
     if @share&.destroy
-      redirect_to @post, notice: 'Share removed.'
+      redirect_to @post, notice: 'Post unshared successfully.'
     else
-      redirect_to @post, alert: 'Unable to remove share.'
+      redirect_to @post, alert: 'You have not shared this post.'
     end
   end
 
