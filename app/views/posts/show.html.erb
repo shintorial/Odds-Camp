@@ -1,0 +1,89 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="bg-white rounded-lg shadow-lg p-6">
+    <div class="mb-8">
+      <div class="flex justify-between items-start mb-4">
+        <div>
+          <h1 class="text-3xl font-bold mb-2"><%= @post.title %></h1>
+          <p class="text-gray-600">
+            Posted by <%= @post.user.email %> <%= time_ago_in_words(@post.created_at) %> ago
+          </p>
+        </div>
+        <% if current_user == @post.user %>
+          <div class="flex space-x-2">
+            <%= link_to 'Edit', edit_post_path(@post), class: 'text-blue-500 hover:text-blue-700' %>
+            <%= button_to 'Delete', post_path(@post), method: :delete, class: 'text-red-500 hover:text-red-700', data: { confirm: 'Are you sure?' } %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="prose max-w-none mb-6">
+        <%= simple_format @post.content %>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <% if user_signed_in? %>
+          <% if current_user.liked_posts.include?(@post) %>
+            <%= button_to 'Unlike', post_like_path(@post, current_user.likes.find_by(post: @post)), 
+                method: :delete, 
+                class: 'text-red-500 hover:text-red-700' %>
+          <% else %>
+            <%= button_to 'Like', post_likes_path(@post), 
+                method: :post, 
+                class: 'text-gray-500 hover:text-red-500' %>
+          <% end %>
+
+          <% if current_user.shared_posts.include?(@post) %>
+            <%= button_to 'Unshare', post_share_path(@post, current_user.shares.find_by(post: @post)), 
+                method: :delete, 
+                class: 'text-blue-500 hover:text-blue-700' %>
+          <% else %>
+            <%= button_to 'Share', post_shares_path(@post), 
+                method: :post, 
+                class: 'text-gray-500 hover:text-blue-500' %>
+          <% end %>
+        <% end %>
+
+        <div class="text-gray-500">
+          <%= pluralize(@post.like_count, 'like') %> · 
+          <%= pluralize(@post.share_count, 'share') %>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t pt-8">
+      <h2 class="text-2xl font-bold mb-6">Comments</h2>
+
+      <% if user_signed_in? %>
+        <%= form_with(model: [@post, @comment], local: true, class: 'mb-8') do |f| %>
+          <div class="mb-4">
+            <%= f.text_area :content, rows: 3, 
+                class: 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500', 
+                placeholder: 'Add a comment...' %>
+          </div>
+          <%= f.submit 'Post Comment', 
+              class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' %>
+        <% end %>
+      <% end %>
+
+      <div class="space-y-6">
+        <% @comments.each do |comment| %>
+          <div class="bg-gray-50 rounded-lg p-4">
+            <div class="flex justify-between items-start mb-2">
+              <div>
+                <p class="font-medium"><%= comment.user.email %></p>
+                <p class="text-gray-500 text-sm"><%= time_ago_in_words(comment.created_at) %> ago</p>
+              </div>
+              <% if current_user == comment.user %>
+                <%= button_to 'Delete', post_comment_path(@post, comment), 
+                    method: :delete, 
+                    class: 'text-red-500 hover:text-red-700', 
+                    data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
+            <p class="text-gray-700"><%= comment.content %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div> 

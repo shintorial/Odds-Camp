@@ -1,0 +1,52 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="text-3xl font-bold">Posts</h1>
+    <% if user_signed_in? %>
+      <%= link_to 'New Post', new_post_path, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' %>
+    <% end %>
+  </div>
+
+  <div class="grid gap-6">
+    <% @posts.each do |post| %>
+      <div class="bg-white rounded-lg shadow p-6">
+        <div class="flex justify-between items-start mb-4">
+          <div>
+            <h2 class="text-xl font-bold mb-2">
+              <%= link_to post.title, post_path(post), class: 'hover:text-blue-500' %>
+            </h2>
+            <p class="text-gray-600 text-sm">
+              Posted by <%= post.user.email %> <%= time_ago_in_words(post.created_at) %> ago
+            </p>
+          </div>
+          <% if current_user == post.user %>
+            <div class="flex space-x-2">
+              <%= link_to 'Edit', edit_post_path(post), class: 'text-blue-500 hover:text-blue-700' %>
+              <%= button_to 'Delete', post_path(post), method: :delete, class: 'text-red-500 hover:text-red-700', data: { confirm: 'Are you sure?' } %>
+            </div>
+          <% end %>
+        </div>
+
+        <p class="text-gray-700 mb-4"><%= truncate(post.content, length: 200) %></p>
+
+        <div class="flex items-center space-x-4 text-sm text-gray-500">
+          <div class="flex items-center">
+            <span class="mr-1"><%= post.comments.count %></span>
+            <span>Comments</span>
+          </div>
+          <div class="flex items-center">
+            <span class="mr-1"><%= post.like_count %></span>
+            <span>Likes</span>
+          </div>
+          <div class="flex items-center">
+            <span class="mr-1"><%= post.share_count %></span>
+            <span>Shares</span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="mt-8">
+    <%= paginate @posts %>
+  </div>
+</div> 
