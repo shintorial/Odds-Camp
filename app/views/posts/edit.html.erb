@@ -26,8 +26,8 @@
       </div>
 
       <div class="flex justify-between items-center">
-        <%= f.submit 'Update Post', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' %>
-        <%= link_to 'Back', post_path(@post), class: 'text-gray-600 hover:text-gray-800' %>
+        <%= f.submit "Update Post", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer", style: "color: white !important;" %>
+        <%= link_to 'Back', post_path(@post), class: 'bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
       </div>
     <% end %>
   </div>
