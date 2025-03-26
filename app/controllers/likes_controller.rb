@@ -3,22 +3,22 @@ class LikesController < ApplicationController
   before_action :set_post
 
   def create
-    @like = current_user.likes.build(post: @post)
+    @like = @post.likes.build(user: current_user)
     
     if @like.save
-      redirect_to @post, notice: 'Post liked successfully.'
+      redirect_to @post
     else
-      redirect_to @post, alert: 'You have already liked this post.'
+      redirect_to @post, alert: 'Unable to like post.'
     end
   end
 
   def destroy
-    @like = current_user.likes.find_by(post: @post)
+    @like = @post.likes.find_by(user: current_user)
     
     if @like&.destroy
-      redirect_to @post, notice: 'Post unliked successfully.'
+      redirect_to @post
     else
-      redirect_to @post, alert: 'You have not liked this post.'
+      redirect_to @post, alert: 'Unable to unlike post.'
     end
   end
 
