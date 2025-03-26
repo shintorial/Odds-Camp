@@ -1,42 +1,33 @@
 <div class="container mx-auto px-4 py-8">
   <div class="max-w-2xl mx-auto">
-    <h1 class="text-3xl font-bold mb-8">Edit Post</h1>
+    <div class="bg-white rounded-lg shadow-lg p-6">
+      <h1 class="text-2xl font-bold mb-6 text-gray-900">Edit Post</h1>
 
-    <%= form_with(model: @post, local: true, class: "ant-form ant-form-vertical") do |f| %>
+    <%= form_with(model: @post, local: true) do |f| %>
       <% if @post.errors.any? %>
-        <div class="ant-alert ant-alert-error">
-          <h2 class="font-bold mb-2">
-            <%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:
-          </h2>
-          <ul class="list-disc list-inside">
-            <% @post.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6">
+          <h2 class="text-red-700 font-medium"><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+          <ul class="list-disc list-inside text-red-600">
+            <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
             <% end %>
           </ul>
         </div>
       <% end %>
 
-      <div class="ant-form-item">
-        <%= f.label :title, class: "ant-form-item-label" %>
-        <div class="ant-form-item-control">
-          <%= f.text_field :title, class: "ant-input" %>
-        </div>
+      <div class="mb-6">
+        <%= f.label :title, class: 'block text-gray-700 font-medium mb-2' %>
+        <%= f.text_field :title, class: 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500' %>
       </div>
 
-      <div class="ant-form-item">
-        <%= f.label :content, class: "ant-form-item-label" %>
-        <div class="ant-form-item-control">
-          <%= f.text_area :content, rows: 5, class: "ant-input" %>
-        </div>
+      <div class="mb-6">
+        <%= f.label :content, class: 'block text-gray-700 font-medium mb-2' %>
+        <%= f.text_area :content, rows: 10, class: 'w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500' %>
       </div>
 
-      <div class="ant-form-item">
-        <div class="ant-form-item-control">
-          <div class="ant-space ant-space-horizontal">
-            <%= link_to "Cancel", post_path(@post), class: "ant-btn ant-btn-default" %>
-            <%= f.submit "Update Post", class: "ant-btn ant-btn-primary" %>
-          </div>
-        </div>
+      <div class="flex justify-between items-center">
+        <%= f.submit 'Update Post', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' %>
+        <%= link_to 'Back', post_path(@post), class: 'text-gray-600 hover:text-gray-800' %>
       </div>
     <% end %>
   </div>

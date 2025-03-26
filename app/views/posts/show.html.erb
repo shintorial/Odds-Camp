@@ -101,7 +101,7 @@
           <%= form_with(model: [@post, @comment], local: true, class: "mb-6") do |f| %>
             <div class="flex items-start space-x-4">
               <div class="flex-grow">
-                <%= f.text_area :content, rows: 3, class: "w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500", placeholder: "Write a comment..." %>
+                <%= f.text_area :content, rows: 3, class: "w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500", placeholder: "Write a comment...", style: "padding: 8px 12px;" %>
               </div>
               <div class="flex-shrink-0">
                 <%= f.submit "Post", class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
