@@ -1,0 +1,230 @@
+/* Material Design 3 Buttons */
+
+/* Filled Button */
+.mdc-button--filled {
+  background-color: #6750A4;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.mdc-button--filled:hover {
+  background-color: #7F67BE;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.mdc-button--filled:active {
+  background-color: #4F3D7D;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+/* Outlined Button */
+.mdc-button--outlined {
+  background-color: transparent;
+  color: #6750A4;
+  border: 1px solid #6750A4;
+  border-radius: 16px;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1px;
+  transition: all 0.2s ease;
+}
+
+.mdc-button--outlined:hover {
+  background-color: rgba(103, 80, 164, 0.08);
+  border-color: #7F67BE;
+  color: #7F67BE;
+}
+
+.mdc-button--outlined:active {
+  background-color: rgba(103, 80, 164, 0.12);
+  border-color: #4F3D7D;
+  color: #4F3D7D;
+}
+
+/* Text Button */
+.mdc-button--text {
+  background-color: transparent;
+  color: #6750A4;
+  border: none;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1px;
+  transition: all 0.2s ease;
+}
+
+.mdc-button--text:hover {
+  background-color: rgba(103, 80, 164, 0.08);
+  color: #7F67BE;
+}
+
+.mdc-button--text:active {
+  background-color: rgba(103, 80, 164, 0.12);
+  color: #4F3D7D;
+}
+
+/* Tonal Button */
+.mdc-button--tonal {
+  background-color: rgba(103, 80, 164, 0.12);
+  color: #6750A4;
+  border: none;
+  border-radius: 16px;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1px;
+  transition: all 0.2s ease;
+}
+
+.mdc-button--tonal:hover {
+  background-color: rgba(103, 80, 164, 0.16);
+  color: #7F67BE;
+}
+
+.mdc-button--tonal:active {
+  background-color: rgba(103, 80, 164, 0.20);
+  color: #4F3D7D;
+}
+
+/* Elevated Button */
+.mdc-button--elevated {
+  background-color: white;
+  color: #6750A4;
+  border: none;
+  border-radius: 16px;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.mdc-button--elevated:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.mdc-button--elevated:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.06);
+}
+
+/* Social Action Buttons (Like & Share) */
+.social-action-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: #6750A4;
+}
+
+.social-action-button:hover {
+  background-color: rgba(103, 80, 164, 0.08);
+  color: #7F67BE;
+}
+
+.social-action-button:active {
+  background-color: rgba(103, 80, 164, 0.12);
+  color: #4F3D7D;
+}
+
+.social-action-button i {
+  font-size: 18px;
+}
+
+/* Like Button Specific */
+.like-button {
+  color: #E91E63;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.like-button .material-symbols-rounded {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+  font-size: 24px;
+  transition: all 0.2s ease;
+}
+
+.like-button:hover {
+  background-color: rgba(233, 30, 99, 0.08);
+  color: #F48FB1;
+}
+
+.like-button:active {
+  background-color: rgba(233, 30, 99, 0.12);
+  color: #C2185B;
+}
+
+.like-button.liked {
+  color: #E91E63;
+  background-color: rgba(233, 30, 99, 0.12);
+}
+
+.like-button.liked .material-symbols-rounded {
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+/* Button Count */
+.like-button .count {
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 4px;
+}
+
+/* Share Button Specific */
+.share-button {
+  color: #2196F3;
+}
+
+.share-button:hover {
+  background-color: rgba(33, 150, 243, 0.08);
+  color: #64B5F6;
+}
+
+.share-button:active {
+  background-color: rgba(33, 150, 243, 0.12);
+  color: #1976D2;
+}
+
+/* Button Count */
+.social-action-button .count {
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 4px;
+} 
