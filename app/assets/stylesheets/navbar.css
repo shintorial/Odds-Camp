@@ -4,6 +4,9 @@
   top: 0;
   z-index: 50;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  padding-left: 16px;
+  padding-right: 16px;
+  height: 64px;
 }
 
 .navbar-container {
@@ -36,14 +39,14 @@
 .navbar-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
 }
 
 .navbar-link {
   color: rgb(209, 213, 219);
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
   font-weight: 500;
   cursor: pointer;
 }
@@ -55,9 +58,9 @@
 .navbar-button {
   color: white;
   font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
   transition: background-color 0.2s;
   cursor: pointer;
 }
