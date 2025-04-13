@@ -18,12 +18,12 @@
             </div>
 
             <div class="form-group">
-                <%= f.label :password, class: "form-label" %>
+                <div class="flex items-center">
+                    <%= f.label :password, class: "form-label" %>
+                    <span class="text-sm text-gray-500 ml-1">(Minimum 6 characters)</span>
+                </div>
                 <div>
                     <%= f.password_field :password, autocomplete: "new-password", class: "form-input" %>
-                    <% if @minimum_password_length %>
-                    <p class="mt-2 text-sm text-gray-500">Minimum <%= @minimum_password_length %> characters</p>
-                    <% end %>
                 </div>
             </div>
 
@@ -41,7 +41,7 @@
                     <span>Or</span>
                 </div>
 
-                <%= link_to "Sign in", new_session_path(resource_name), class: "sign-in-link" %>
+                <%= link_to "Log in", new_session_path(resource_name), class: "sign-in-link" %>
             </div>
             <% end %>
 

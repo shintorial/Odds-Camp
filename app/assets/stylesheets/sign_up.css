@@ -57,6 +57,7 @@
   line-height: 20px;
   font-weight: 500;
   color: rgb(55 65 81);
+  margin-right: 4px;
 }
 
 .form-input {
@@ -151,9 +152,7 @@
 }
 
 .sign-in-link:hover {
-  color: rgb(0, 0, 0);
-  border-color: rgb(59 130 246);
-
+  background-color: rgb(249 250 251);
 }
 
 .sign-in-link:focus {
@@ -161,4 +160,4 @@
   ring: 2px;
   ring-offset: 2px;
   ring-color: rgb(59 130 246);
-} 
+}
