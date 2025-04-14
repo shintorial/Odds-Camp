@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title><%= content_for(:title) || "Odds Camp" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -27,20 +26,20 @@
     <%= stylesheet_link_tag "sign_up", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "navbar", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "posts", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "post_card", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "content", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "new_post", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "post_detail", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "post_card", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "share_buttons", "data-turbo-track": "reload" %>
 
     <%= javascript_importmap_tags %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/antd/5.15.1/antd.min.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <%= render 'shared/navbar' if user_signed_in? %>
 
 
-    <%= yield %>
-</body>
 
+    <%= yield %>
+  </body>
 </html>
