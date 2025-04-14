@@ -1,0 +1,126 @@
+/* Comments section styles */
+.comments-section {
+  margin-top: 16px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 16px;
+}
+
+.comments-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1f2937;
+}
+
+/* Comment form styles */
+.comment-form {
+  margin-bottom: 24px;
+}
+
+.comment-form-container {
+  position: relative;
+}
+
+.comment-input-container {
+  position: relative;
+}
+
+.comment-textarea {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  padding: 8px 12px 40px 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #374151;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  resize: none;
+}
+
+.comment-textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  outline: none;
+}
+
+.comment-submit-button {
+  position: absolute;
+  right: 8px;
+  bottom: 12px;
+  background-color: #3b82f6;
+  color: white;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border: none;
+}
+
+.comment-submit-button:hover {
+  background-color: #2563eb;
+}
+
+/* Comments list styles */
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.comment-item {
+  display: flex;
+  gap: 16px;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.comment-card {
+  background-color: #f9fafb;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.comment-author {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.comment-time {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.comment-text {
+  color: #374151;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.comment-actions {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete-comment-button {
+  font-size: 14px;
+  color: #dc2626;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.delete-comment-button:hover {
+  color: #b91c1c;
+} 

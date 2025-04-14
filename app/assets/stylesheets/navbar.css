@@ -51,9 +51,11 @@
 
 .navbar-button {
   color: white;
+  background-color: transparent;
   font-weight: 500;
   padding: 8px 16px;
   border-radius: 6px;
+  border: none;
   font-size: 14px;
   transition: background-color 0.2s;
   cursor: pointer;

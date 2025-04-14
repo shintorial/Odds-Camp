@@ -1,32 +1,32 @@
-<div class="mt-8 border-t pt-8">
-  <h3 class="text-lg font-semibold mb-4">Comments</h3>
+<div class="comments-section">
+  <h3 class="comments-title">Comments</h3>
   
   <% if user_signed_in? %>
-    <%= form_with(model: [post, comment], local: true, class: "mb-6") do |f| %>
-      <div class="flex items-start space-x-4">
-        <div class="flex-grow">
-          <%= f.text_area :content, rows: 3, class: "w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500", placeholder: "Write a comment...", style: "padding: 8px 12px;" %>
+    <%= form_with(model: [post, comment], local: true, class: "comment-form") do |f| %>
+      <div class="comment-form-container">
+        <div class="comment-input-container">
+          <%= f.text_area :content, rows: 3, class: "comment-textarea", placeholder: "Write a comment..." %>
         </div>
         <div class="flex-shrink-0">
-          <%= f.submit "Post", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer", style: "color: white !important;" %>
+          <%= f.submit "Comment", class: "comment-submit-button" %>
         </div>
       </div>
     <% end %>
   <% end %>
 
-  <div class="space-y-6">
+  <div class="comments-list">
     <% comments.each do |comment| %>
-      <div class="flex space-x-4">
-        <div class="flex-1">
-          <div class="bg-gray-50 rounded-lg p-4">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-sm font-medium text-gray-900"><%= comment.user.email %></span>
-              <span class="text-sm text-gray-500"><%= time_ago_in_words(comment.created_at) %> ago</span>
+      <div class="comment-item">
+        <div class="comment-content">
+          <div class="comment-card">
+            <div class="comment-header">
+              <span class="comment-author"><%= comment.user.email %></span>
+              <span class="comment-time"><%= time_ago_in_words(comment.created_at) %> ago</span>
             </div>
-            <p class="text-gray-700"><%= comment.content %></p>
+            <p class="comment-text"><%= comment.content %></p>
             <% if current_user == comment.user %>
-              <div class="mt-2 flex justify-end">
-                <%= button_to "Delete", post_comment_path(post, comment), method: :delete, class: "text-sm text-red-600 hover:text-red-700 cursor-pointer" %>
+              <div class="comment-actions">
+                <%= button_to "Delete", post_comment_path(post, comment), method: :delete, class: "delete-comment-button" %>
               </div>
             <% end %>
           </div>

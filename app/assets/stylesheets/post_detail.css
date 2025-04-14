@@ -32,6 +32,9 @@
   font-weight: bold;
   margin-bottom: 8px;
   color: #333;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-line;
 }
 
 .post-meta {
@@ -83,7 +86,6 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  border-top: 1px solid #e5e7eb;
   padding-top: 16px;
 }
 
