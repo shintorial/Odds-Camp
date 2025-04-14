@@ -1,21 +1,23 @@
-<div class="post-card">
-  <div class="post-card-content">
-    <div class="post-card-header">
-      <div class="post-title">
-        <%= link_to post.title, post_path(post) %>
+<%= link_to post_path(post), class: "post-card-link" do %>
+  <div class="post-card">
+    <div class="post-card-content">
+      <div class="post-card-header">
+        <div class="post-title">
+          <%= post.title %>
+        </div>
+        <div class="post-author">
+          <%= post.user.email %>
+        </div>
       </div>
-      <div class="post-author">
-        <%= post.user.email %>
+      <div class="post-preview">
+        <%= truncate(post.content, length: 200) %>
       </div>
     </div>
-    <div class="post-preview">
-      <%= truncate(post.content, length: 200) %>
+    <div class="post-footer">
+      <div class="post-date">
+        <%= post.created_at.in_time_zone('Asia/Bangkok').strftime("%d %B %Y - %H:%M") %>
+      </div>
     </div>
   </div>
-  <div class="post-footer">
-    <div class="post-date">
-      <%= post.created_at.strftime("%d %B %Y - %H:%M") %>
-    </div>
-  </div>
-</div> 
+<% end %> 
 

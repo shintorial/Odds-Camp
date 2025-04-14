@@ -1,4 +1,10 @@
 /* Post card styles */
+.post-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 .post-card {
     width: 100%;
     padding: 16px;
@@ -8,18 +14,29 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    height: 300px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
   }
   
   .post-card-content {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    height: 100%;
   }
   
   .post-card-header {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    flex-shrink: 0;
   }
   
   .post-title {
@@ -27,6 +44,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
   }
   
   .post-title a {
@@ -43,25 +63,28 @@
   .post-author {
     color: #666;
     font-size: 12px;
-    text-align: right;
+    text-align: left;
   }
   
   .post-preview {
     color: #333;
     font-size: 14px;
     line-height: 1.5;
-    height: 84px;
+    flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
+    word-break: break-word;
+    min-height: 0;
   }
   
   .post-footer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    flex-shrink: 0;
   }
   
   .post-date {

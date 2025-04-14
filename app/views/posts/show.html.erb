@@ -46,28 +46,3 @@
     </div>
   </div>
 </div>
-
-<%= javascript_tag do %>
-  window.addEventListener('click', function(e) {
-    const dropdowns = document.querySelectorAll('[data-controller="dropdown"]');
-    dropdowns.forEach(dropdown => {
-      const menu = dropdown.querySelector('[data-dropdown-target="menu"]');
-      if (!dropdown.contains(e.target)) {
-        menu.classList.add('hidden');
-      }
-    });
-  });
-
-  document.addEventListener('DOMContentLoaded', function() {
-    const dropdowns = document.querySelectorAll('[data-controller="dropdown"]');
-    dropdowns.forEach(dropdown => {
-      const button = dropdown.querySelector('[data-action="dropdown#toggle"]');
-      const menu = dropdown.querySelector('[data-dropdown-target="menu"]');
-      
-      button.addEventListener('click', function(e) {
-        e.stopPropagation();
-        menu.classList.toggle('hidden');
-      });
-    });
-  });
-<% end %> 
