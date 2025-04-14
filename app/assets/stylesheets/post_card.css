@@ -23,7 +23,7 @@
   }
   
   .post-title {
-    height: 24px;
+    height: 40px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
