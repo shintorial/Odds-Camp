@@ -1,19 +1,19 @@
-<div style="width: 382px; padding: 16px; background: white; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25); border-radius: 16px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: inline-flex">
-  <div style="align-self: stretch; flex-direction: column; justify-content: center; align-items: flex-start; gap: 16px; display: flex">
-    <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: flex">
-      <div style="align-self: stretch; height: 19px; max-height: 19px; justify-content: center; display: flex; flex-direction: column; color: black; font-size: 16px; font-family: Inter; font-weight: 500; word-wrap: break-word; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-        <%= link_to post.title, post_path(post), style: 'color: black; text-decoration: none;' %>
+<div class="post-card">
+  <div class="post-card-content">
+    <div class="post-card-header">
+      <div class="post-title">
+        <%= link_to post.title, post_path(post) %>
       </div>
-      <div style="max-height: 14px; text-align: right; justify-content: center; display: flex; flex-direction: column; color: #858585; font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">
+      <div class="post-author">
         <%= post.user.email %>
       </div>
     </div>
-    <div style="width: 350px; height: 114px; max-height: 114px; justify-content: center; display: flex; flex-direction: column; color: black; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">
+    <div class="post-preview">
       <%= truncate(post.content, length: 200) %>
     </div>
   </div>
-  <div style="align-self: stretch; justify-content: flex-end; align-items: center; gap: 10px; display: inline-flex">
-    <div style="justify-content: center; display: flex; flex-direction: column; color: #858585; font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">
+  <div class="post-footer">
+    <div class="post-date">
       <%= post.created_at.strftime("%d %B %Y - %H:%M") %>
     </div>
   </div>

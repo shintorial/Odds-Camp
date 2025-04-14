@@ -178,6 +178,7 @@
   font-weight: 500;
   color: rgb(55 65 81);
   background-color: white;
+  text-decoration: none;
 }
 
 .sign-up-link:hover {
