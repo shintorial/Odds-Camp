@@ -1,9 +1,9 @@
 import { Application } from "@hotwired/stimulus"
 
 const application = Application.start()
-
-// Configure Stimulus development experience
 application.debug = false
+
+// บรรทัดนี้สำคัญเพื่อให้ window.Stimulus ทำงาน
 window.Stimulus = application
 
-export { application } 
+export { application }

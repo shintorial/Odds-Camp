@@ -3,7 +3,7 @@
     <div class="post-show-card">
       <div class="post-header">
         <div class="post-title-section">
-          <h1 class="post-title"><%= @post.title %></h1>
+          <div class="post-title-text"><%= @post.title %></div>
           <p class="post-meta">
             Posted by <%= @post.user.email %> <%= time_ago_in_words(@post.created_at) %> ago
           </p>
