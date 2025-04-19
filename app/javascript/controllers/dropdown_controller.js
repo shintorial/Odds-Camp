@@ -5,9 +5,15 @@ export default class extends Controller {
 
   connect() {
     console.log("Dropdown controller connected")
+    document.addEventListener("click", this.hide.bind(this))
   }
 
-  toggle() {
+  disconnect() {
+    document.removeEventListener("click", this.hide.bind(this))
+  }
+
+  toggle(event) {
+    event.stopPropagation()
     console.log("Toggle clicked")
     this.menuTarget.classList.toggle("hidden")
   }
