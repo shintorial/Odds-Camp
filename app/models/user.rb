@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :shares, dependent: :destroy
-  
+
   has_many :liked_posts, through: :likes, source: :post
   has_many :shared_posts, through: :shares, source: :post
-end 
+end
