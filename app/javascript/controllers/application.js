@@ -1,9 +1,6 @@
 import { Application } from "@hotwired/stimulus"
+import DropdownController from "./controllers/dropdown_controller"
 
 const application = Application.start()
-application.debug = false
+application.register("dropdown", DropdownController)
 
-// บรรทัดนี้สำคัญเพื่อให้ window.Stimulus ทำงาน
-window.Stimulus = application
-
-export { application }

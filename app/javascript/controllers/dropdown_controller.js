@@ -4,23 +4,19 @@ export default class extends Controller {
   static targets = ["menu"]
 
   connect() {
-    console.log("Dropdown controller connected")
-    document.addEventListener("click", this.hide.bind(this))
-  }
-
-  disconnect() {
-    document.removeEventListener("click", this.hide.bind(this))
+    console.log("✅ Dropdown controller loaded")
   }
 
   toggle(event) {
     event.stopPropagation()
-    console.log("Toggle clicked")
+    console.log("🔁 toggle clicked")
     this.menuTarget.classList.toggle("hidden")
   }
 
   hide(event) {
-    if (!this.element.contains(event?.target)) {
+    if (!this.element.contains(event.target)) {
+      console.log("👋 hide triggered")
       this.menuTarget.classList.add("hidden")
     }
   }
-} 
+}
