@@ -6,7 +6,6 @@
 .share-button {
   display: flex;
   align-items: center;
-  gap: 8px; /* 0.5rem */
   padding: 8px 16px; /* 0.5rem 1rem */
   background-color: white;
   border: 1px solid #e5e7eb;

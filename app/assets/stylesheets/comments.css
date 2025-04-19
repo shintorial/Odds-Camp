@@ -66,11 +66,10 @@
 .comments-list {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 }
 
 .comment-item {
-  display: flex;
   gap: 16px;
 }
 
@@ -106,6 +105,9 @@
   color: #374151;
   font-size: 14px;
   line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-line;
 }
 
 .comment-actions {
