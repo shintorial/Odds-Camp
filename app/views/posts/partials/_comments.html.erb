@@ -1,37 +1,39 @@
 <div class="comments-section">
-  <h3 class="comments-title">Comments</h3>
-  
-  <% if user_signed_in? %>
+    <h3 class="comments-title">Comments</h3>
+
+    <% if user_signed_in? %>
     <%= form_with(model: [post, comment], local: true, class: "comment-form") do |f| %>
-      <div class="comment-form-container">
+    <div class="comment-form-container">
         <div class="comment-input-container">
-          <%= f.text_area :content, rows: 3, class: "comment-textarea", placeholder: "Write a comment..." %>
+            <%= f.text_area :content, rows: 3, class: "comment-textarea", placeholder: "Write a comment..." %>
         </div>
         <div class="flex-shrink-0">
-          <%= f.submit "Comment", class: "comment-submit-button" %>
+            <%= f.submit "Comment", class: "comment-submit-button" %>
         </div>
-      </div>
+    </div>
     <% end %>
-  <% end %>
+    <% end %>
 
-  <div class="comments-list">
-    <% comments.each do |comment| %>
-      <div class="comment-item">
-        <div class="comment-content">
-          <div class="comment-card">
-            <div class="comment-header">
-              <span class="comment-author"><%= comment.user.email %></span>
-              <span class="comment-time"><%= time_ago_in_words(comment.created_at) %> ago</span>
+    <div class="comments-list">
+        <% comments.each do |comment| %>
+        <div class="comment-item">
+            <div class="comment-content">
+                <div class="comment-card">
+                    <div class="comment-header">
+                        <span class="comment-author"><%= comment.user.email %></span>
+                        <span class="comment-time"><%= time_ago_in_words(comment.created_at) %> ago</span>
+                    </div>
+                    <p class="comment-text"><%= comment.content %></p>
+                    <% if current_user == comment.user %>
+
+                    <div class="comment-actions">
+                        <%= button_to "Delete", post_comment_path(post, comment), method: :delete, class: "delete-comment-button" %>
+                    </div>
+                    
+                    <% end %>
+                </div>
             </div>
-            <p class="comment-text"><%= comment.content %></p>
-            <% if current_user == comment.user %>
-              <div class="comment-actions">
-                <%= button_to "Delete", post_comment_path(post, comment), method: :delete, class: "delete-comment-button" %>
-              </div>
-            <% end %>
-          </div>
         </div>
-      </div>
-    <% end %>
-  </div>
-</div> 
+        <% end %>
+    </div>
+</div>

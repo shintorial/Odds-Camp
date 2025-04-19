@@ -1,48 +1,52 @@
 <div class="post-show-container">
-  <div class="post-show-content">
-    <div class="post-show-card">
-      <div class="post-header">
-        <div class="post-title-section">
-          <div class="post-title-text"><%= @post.title %></div>
-          <p class="post-meta">
-            Posted by <%= @post.user.email %> <%= time_ago_in_words(@post.created_at) %> ago
-          </p>
-        </div>
-        <% if current_user == @post.user %>
-          <div class="post-actions">
-            <%= link_to 'Edit', edit_post_path(@post), class: 'edit-button' %>
-            <%= button_to 'Delete', post_path(@post), method: :delete, class: 'delete-button', data: { confirm: 'Are you sure?' } %>
-          </div>
-        <% end %>
-      </div>
+    <div class="post-show-content">
+        <div class="post-show-card">
+            <div class="post-header">
+                <div class="post-title-section">
+                    <div class="post-title-text"><%= @post.title %></div>
+                    <p class="post-meta">
+                        Posted by <%= @post.user.email %> <%= time_ago_in_words(@post.created_at) %> ago
+                    </p>
+                </div>
+                <% if current_user == @post.user %>
+                <div class="post-actions">
+                    <%= link_to 'Edit', edit_post_path(@post), class: 'edit-button' %>
+                    <%= button_to 'Delete', post_path(@post), method: :delete, class: 'delete-button', data: { confirm: 'Are you sure?' } %>
+                </div>
+                <% end %>
+            </div>
 
-      <div class="post-content">
-        <%= @post.content %>
-      </div>
+            <div class="post-content">
+                <%= @post.content %>
+            </div>
 
-      <div class="post-interactions">
-        <div class="like-section">
-          <% if current_user && @post.likes.exists?(user: current_user) %>
-            <%= button_to post_like_path(@post, @post.likes.find_by(user: current_user)), 
+            <div class="post-interactions">
+                <div class="like-section">
+
+                    <% if current_user && @post.likes.exists?(user: current_user) %>
+                    <%= button_to post_like_path(@post, @post.likes.find_by(user: current_user)), 
                 method: :delete, 
                 class: 'like-button liked' do %>
-              <span class="material-symbols-rounded">favorite</span>
-              <span class="count"><%= @post.likes.count %></span>
-            <% end %>
-          <% else %>
-            <%= button_to post_likes_path(@post), 
+                    <span class="material-symbols-rounded">favorite</span>
+                    <span class="count"><%= @post.likes.count %></span>
+                    <% end %>
+
+                    <% else %>
+                    <%= button_to post_likes_path(@post), 
                 method: :post, 
                 class: 'like-button' do %>
-              <span class="material-symbols-rounded">favorite</span>
-              <span class="count"><%= @post.likes.count %></span>
-            <% end %>
-          <% end %>
+                    <span class="material-symbols-rounded">favorite</span>
+                    <span class="count"><%= @post.likes.count %></span>
+                    <% end %>
+
+                    <% end %>
+                </div>
+
+                <%= render 'posts/partials/share_buttons', post: @post %>
+
+            </div>
+
+            <%= render 'posts/partials/comments', post: @post, comment: @comment, comments: @comments %>
         </div>
-
-        <%= render 'posts/partials/share_buttons', post: @post %>
-      </div>
-
-      <%= render 'posts/partials/comments', post: @post, comment: @comment, comments: @comments %>
     </div>
-  </div>
 </div>

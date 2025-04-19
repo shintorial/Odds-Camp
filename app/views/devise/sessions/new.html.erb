@@ -22,15 +22,6 @@
                 </div>
             </div>
 
-            <% if devise_mapping.rememberable? %>
-            <div class="remember-me-container">
-                <div class="flex items-center">
-                    <%= f.check_box :remember_me, class: "remember-me-checkbox" %>
-                    <%= f.label :remember_me, class: "remember-me-label" %>
-                </div>
-            </div>
-            <% end %>
-
             <div>
                 <%= f.submit "Log in", class: "sign-in-button" %>
 

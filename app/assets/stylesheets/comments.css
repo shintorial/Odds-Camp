@@ -117,12 +117,10 @@
 }
 
 .delete-comment-button {
+  background: none;
+  border: none;
   font-size: 14px;
   color: #dc2626;
   cursor: pointer;
   transition: color 0.2s;
 }
-
-.delete-comment-button:hover {
-  color: #b91c1c;
-} 

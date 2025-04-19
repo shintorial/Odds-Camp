@@ -19,7 +19,6 @@
 .post-header {
   justify-content: space-between;
   align-items: flex-start;
-
 }
 
 .post-title-section {
@@ -81,7 +80,10 @@
 
 .post-interactions {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  flex-wrap: nowrap;
   gap: 16px;
   padding-top: 16px;
 }
