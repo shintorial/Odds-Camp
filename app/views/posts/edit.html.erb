@@ -1,8 +1,11 @@
-<div class="container mx-auto px-4 py-8">
-  <div class="max-w-4xl mx-auto">
-    <div class="bg-white rounded-lg shadow-lg p-6">
-      <h1 class="text-3xl font-bold mb-6">Edit Post</h1>
-      <%= render 'posts/partials/form', post: @post %>
+<div class="posts-page-container">
+
+    <div class="new-posts-header">
+        <h1 class="posts-title"> Edit Post</h1>
     </div>
-  </div>
-</div> 
+
+    <div>
+        <%= render 'posts/partials/form', post: @post %>
+    </div>
+
+</div>
