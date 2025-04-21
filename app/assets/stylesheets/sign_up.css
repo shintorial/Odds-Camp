@@ -162,3 +162,50 @@
   ring-offset: 2px;
   ring-color: rgb(59 130 246);
 }
+
+/* Error Messages Styling */
+.error-messages {
+  background-color: rgb(254, 242, 242);
+  border-left: 4px solid rgb(248, 113, 113);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.375rem;
+}
+
+.error-messages .flex {
+  display: flex;
+  align-items: center;
+}
+
+.error-messages .flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+.error-messages .ml-3 {
+  margin-left: 0.75rem;
+}
+
+.error-messages .mt-2 {
+  margin-top: 0.5rem;
+}
+
+.error-messages .text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.error-messages .text-red-700 {
+  color: rgb(185, 28, 28);
+}
+
+.error-messages .list-disc {
+  list-style-type: disc;
+}
+
+.error-messages .pl-5 {
+  padding-left: 1.25rem;
+}
+
+.error-messages .space-y-1 > * + * {
+  margin-top: 0.25rem;
+}
