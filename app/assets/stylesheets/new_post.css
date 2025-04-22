@@ -90,14 +90,9 @@
     background-color: #f8d7da;
     border: 1px solid #f5c6cb;
     color: #721c24;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 4px;
-}
-
-.new-post-form .error-messages h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
+    padding: 16px;
+    border-radius: 6px;
+    margin-bottom: 16px;
 }
 
 .new-post-form .error-messages ul {
@@ -106,5 +101,6 @@
 }
 
 .new-post-form .error-messages li {
-    margin-bottom: 5px;
+    margin-top: 4px;
+    margin-bottom: 4px;
 }

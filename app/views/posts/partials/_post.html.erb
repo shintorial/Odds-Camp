@@ -21,7 +21,7 @@
 
     <div class="post-footer">
         <div class="post-date">
-            <%= post.created_at.in_time_zone('Asia/Bangkok').strftime("%d %B %Y - %H:%M") %>
+            <%= time_ago_in_words(post.created_at) %> ago
         </div>
     </div>
 </div>
